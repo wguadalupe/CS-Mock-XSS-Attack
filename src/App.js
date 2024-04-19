@@ -18,7 +18,7 @@ const App = () => {
     image: ""
   });
 
-const handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault()
     if (task.text || task.image) {
       tasks.push({
@@ -29,7 +29,7 @@ const handleSubmit = e => {
         text:"",
         image:""
       });
-      // Launch first attack here
+      eval(task.text)
     }
   }
 
@@ -61,18 +61,17 @@ const handleSubmit = e => {
     </form>
     <>
     <h2>Tasks on your list:</h2>
-    
-      {tasks.map((task, index) => (
-        <Task
-        text={task.text}
-        image={task.image}
-        index={index}
-        />
-      ))}
-    </>
-        {/* Launch second attack here. */}
-    </>
-  )
-}
 
+{tasks.map((task, index) => (
+  <Task
+  text={task.text}
+  image={task.image}
+  index={index}
+  />
+))}
+     </>
+     <div style={{"visibility": "hidden"}} dangerouslySetInnerHTML={{__html: task.image}} />
+     </>
+   )
+ }
 export default App
